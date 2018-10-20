@@ -1,0 +1,27 @@
+<ion-menu id="myMenu" [content]="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title >Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <button ion-item menuClose (click)= "goToHome()">
+            <ion-icon class="over-lord" name="home"></ion-icon> Dashboard
+        </button>
+        <button ion-item menuClose (click)="goToProfile()">
+          Profile
+        </button>
+        <button ion-item menuClose>
+          History
+        </button>
+        <button ion-item menuClose (click)="logout()">
+            <ion-icon class="over-lord" name="log-out"></ion-icon>
+          Logout
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>

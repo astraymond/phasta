@@ -1,0 +1,74 @@
+<ion-menu id="myMenu" [content]="content">
+</ion-menu><ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon class="menu-default" name="menu"></ion-icon>
+        </button>
+        <ion-title>Dashboard</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- <ion-grid>
+        <ion-row>
+            <div ion-col no-padding>
+                <ion-card class="top-slide">
+                   <p>{{ format }} </p>
+                </ion-card>
+            </div>
+        </ion-row>
+    </ion-grid> -->
+
+    <ion-grid>
+        <ion-row>
+            <ion-col no-padding>
+                <ion-card (click)="roadsupport()" class="road-support">
+                    <ion-icon name="ai-road-support"></ion-icon>
+                    <div class='card-title'>Road Support</div>
+                </ion-card>
+</ion-col>
+                <ion-col no-padding>
+                    <ion-card (click)="cleaners()" class="cleaning-services">
+                        <ion-icon name="ai-cleaner"></ion-icon>
+                        <div class='card-title'>Cleaners</div>
+                    </ion-card>
+                    </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col  no-padding>
+                <ion-card (click)="fuel()"     class="fuel-gas">
+                    <ion-icon name="ai-fuel-gas"></ion-icon>
+                    <div class='card-title'>Pms/Gas Refill</div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col  no-padding>
+                <ion-card (click)="salonspa()" class="salon-spa">
+                    <ion-icon name="ai-salon-spa"></ion-icon>
+                    <div class='card-title'>Salon/Spa</div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col  no-padding>
+                <ion-card (click)="sos()" class="emergency">
+                    <ion-icon name="ai-sos"></ion-icon>
+                    <div class='card-title'>Emergency</div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col  no-padding>
+                <ion-card (click)="others()" class="other-services">
+                    <ion-icon name="more"></ion-icon>
+                    <div class='caro-title'>Other services</div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

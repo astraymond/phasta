@@ -1,0 +1,51 @@
+page-emergency {
+
+
+ion-card{
+    position: relative;
+    height:130px;
+    text-align: center
+}
+
+
+
+ion-icon{
+    text-align: center;
+    position: relative;
+    font-size:100px;
+}
+
+
+
+
+
+    .ai-ambulance:before ,
+    .ion-ios-ai-ambulance:before ,
+    .ion-ios-ai-ambulance-outline:before ,
+    .ion-md-ai-ambulance:before ,
+    .ion-md-ai-ambulance-outline:before {
+    content: '\e900';
+    
+   
+    }
+
+    .ai-fire-service:before ,
+    .ion-ios-ai-fire-service:before ,
+    .ion-ios-ai-fire-service-outline:before ,
+    .ion-md-ai-fire-service:before ,
+    .ion-md-ai-fire-service-outline:before {
+    content: '\e901';
+    
+   
+    }
+
+    .ai-police:before ,
+    .ion-ios-ai-police:before ,
+    .ion-ios-ai-police-outline:before ,
+    .ion-md-ai-police:before ,
+    .ion-md-ai-police-outline:before {
+    content: '\e902';
+   
+    }
+    
+}

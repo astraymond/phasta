@@ -1,0 +1,33 @@
+page-signin {
+
+    .signin {
+        background: url(../assets/imgs/welcome.jpg)  no-repeat center center fixed;
+        background-size: 100%;
+        background-position-y: -10%;
+        // padding-right: 0px;
+        // margin-left: -50px;
+    
+
+
+    }
+
+    .stagnetti{
+        position: fixed;
+        padding-right: 35px;
+        margin-top:150px;
+        position: fixed;
+        
+    }
+
+    .margin-top{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    p{
+        font: bold;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 50%;
+    }
+}

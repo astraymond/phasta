@@ -1,0 +1,37 @@
+<ion-menu id="myMenu" [content]="content"></ion-menu>
+<ion-header>
+
+</ion-header>
+
+
+<ion-content padding class='signin' no-bounce>
+  <!-- <img src="../../assets/imgs/Phasta.jpg"> -->
+  <ion-col class="stagnetti">
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+      <ion-item>
+        <ion-input formControlName="email" type="email"
+        placeholder="Your email address"
+        [class.invalid]="!loginForm.controls.email.valid && blur">
+        </ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid &&
+      loginForm.controls.email.touched">
+       <p>Please enter a valid email address.</p>
+     </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="password" type="password"
+        placeholder="Your password"
+        [class.invalid]="!loginForm.controls.password.valid && blur">
+      </ion-input>
+      </ion-item>
+
+      <button class="margin-top" ion-button block type="submit" [disabled]="!loginForm">
+        Log In
+      </button>
+    </form>
+    <p (click)="goToSignup()">New User? sign up now</p>
+  </ion-col>
+
+</ion-content>

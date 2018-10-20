@@ -1,0 +1,75 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='navbar'>
+    <ion-title>signup</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+    <!-- <ion-item>
+      <ion-input placeholder="First Name" formControlName="firstname" type="text" name="title"></ion-input>
+    </ion-item>
+    <ion-item class="form-text error" *ngIf="signupForm.controls.firstname.hasError('required') && (signupForm.controls.firstname.dirty || signupForm.controls.firstname.touched) && signupForm.controls.firstname.valid  ">
+      <ion-label no-margin stacked wrap-text>*Firstname is required</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Last Name" formControlName="lastname" type="text" name="title"></ion-input>
+    </ion-item>
+    <ion-item class="form-text error" *ngIf="lastname.hasError('required') && (lastname.dirty || lastname.touched)">
+      <ion-label no-margin stacked wrap-text>*Lastname is required</ion-label>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="Email" [class.invalid]="!signupForm.controls.email.valid && blur"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  
+    && signupForm.controls.email.touched">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="Password" [class.invalid]="!signupForm.controls.password.valid && blur"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && 
+    signupForm.controls.password.touched">
+      <p>Your password needs more than 6 characters.</p>
+    </ion-item>
+
+
+     <ion-item>
+      <ion-input formControlName="confirmPassword" type="password" placeholder="Confirm Password"></ion-input>
+    </ion-item>
+    <ion-item class="form-text error" *ngIf="confirmPassword.hasError('mismatchedPasswords') && confirmPassword.required">
+      <ion-label no-margin stacked wrap-text> *Password Missmatch</ion-label>
+    </ion-item>
+  
+  
+  
+    <!--<ion-item>
+      <ion-input placeholder="Address" formControlName="address" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="form-text error" *ngIf="address.hasError('required') && address.touched">
+      <ion-label no-margin stacked wrap-text> *Address is required</ion-label>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input placeholder="Phone Number" formControlName="phone" type="Number"></ion-input>
+    </ion-item>
+    <ion-item class="form-text error" *ngIf="phone.hasError('required') && phone.touched">
+      <ion-label no-margin stacked wrap-text>*Phone Number is required</ion-label>
+    </ion-item> -->
+    <button ion-button block type="submit"  [disabled]="!signupForm.valid"> Register </button>
+
+    <pre> {{ signupForm.value | json }} </pre>
+  </form>
+
+</ion-content>
