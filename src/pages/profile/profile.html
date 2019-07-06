@@ -6,17 +6,36 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>profile</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Profile</ion-title>
   </ion-navbar>
-  <ion-buttons end>
-
-  </ion-buttons>
-
 </ion-header>
-
-
 <ion-content padding>
+  <ion-list>
+    <ion-row>
+      <ion-item>
+        <ion-col col-12>
+          <ion-avatar *ngIf="!userProfile?.profilePicture" class="avatar" (click)="openSelect()">
+            <img src="assets/imgs/person-icon.png">
+          </ion-avatar>
+
+          <ion-avatar *ngIf="userProfile?.profilePicture" class="avatar" (click)="openSelect()"> 
+            <img [src]="userProfile?.profilePicture">
+          </ion-avatar>
+        </ion-col>
+      </ion-item>
+      <ion-item hidden>
+        <ion-select  interface="action-sheet" #mySelect>
+          <ion-option  class="option" (ionSelect)="takePicture(1)">Take Photo</ion-option>
+          <ion-option  (ionSelect)="takePicture(0)">Add Photo</ion-option>
+        </ion-select>
+        </ion-item>
+
+
+    </ion-row>
+  </ion-list>
+  <span *ngIf="profilePicture">Picture taken!</span>
+
   <ion-list>
     <ion-list-header>
       Personal Information
@@ -35,58 +54,58 @@
       </ion-grid>
     </ion-item>
     <ion-item (click)="updateEmail()">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-6> Email </ion-col>
-            <ion-col col-6 *ngIf="userProfile?.email">
-              {{userProfile?.email}}
-            </ion-col>
-            <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.email">
-              <span> Tap here to edit. </span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-      
-      <ion-item (click)="updatePassword()">
-          <ion-grid>
-            <ion-row>
-              <ion-col col-6> Password </ion-col>
-              <ion-col col-6 class="placeholder-profile">
-                <span> Tap here to edit. </span>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-    
-      <ion-item (click)="updatePhone()">
-          <ion-grid>
-            <ion-row>
-              <ion-col col-6> Mobile </ion-col>
-              <ion-col col-6 *ngIf="userProfile?.phoneNumber">
-                {{userProfile?.phoneNumber}}
-              </ion-col>
-              <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.phoneNumber">
-                <span> Tap here to edit. </span>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Email </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.email">
+            {{userProfile?.email}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.email">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
-        <ion-item (click)="updateAddress()">
-            <ion-grid>
-              <ion-row>
-                <ion-col col-6> Address </ion-col>
-                <ion-col col-6 *ngIf="userProfile?.homeAddress">
-                  {{userProfile?.homeAddress}}
-                </ion-col>
-                <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.homeAddress">
-                  <span> Tap here to edit. </span>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-item>
+    <ion-item (click)="updatePassword()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Password </ion-col>
+          <ion-col col-6 class="placeholder-profile">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
-        
+    <ion-item (click)="updatePhone()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Mobile </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.phoneNumber">
+            {{userProfile?.phoneNumber}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.phoneNumber">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item (click)="updateAddress()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Address </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.homeAddress">
+            {{userProfile?.homeAddress}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.homeAddress">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
   </ion-list>
 </ion-content>

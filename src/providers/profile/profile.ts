@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import firebase, { User } from 'firebase/app';
 import 'firebase/database';
+import 'firebase/storage';
+import 'firebase/auth';
 /*
   Generated class for the ProfileProvider provider.
 
@@ -12,15 +14,16 @@ export class ProfileProvider {
 
   public userProfile: firebase.database.Reference;
   public currentUser: User;
+  //profilePicture: string = null;
 
   constructor() {
-    firebase.auth().onAuthStateChanged( user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.currentUser =user;
-        this.userProfile = 
-        firebase.database().ref(`/userProfile/${user.uid}`);
+        this.currentUser = user;
+        this.userProfile =
+          firebase.database().ref(`/userProfile/${user.uid}`);
       }
-  
+
     });
   }
 
@@ -29,17 +32,17 @@ export class ProfileProvider {
   }
 
 
-  updateName (firstName: string, lastName: string): Promise <any> {
+  updateName(firstName: string, lastName: string): Promise<any> {
     return this.userProfile.update({ firstName, lastName });
 
   }
 
-  updatePhone (phoneNumber: string) : Promise <any> {
-    return this.userProfile.update ({ phoneNumber});
+  updatePhone(phoneNumber: string): Promise<any> {
+    return this.userProfile.update({ phoneNumber });
   }
 
-  updateAddress (homeAddress: string) : Promise <any> {
-    return this.userProfile.update ({homeAddress});
+  updateAddress(homeAddress: string): Promise<any> {
+    return this.userProfile.update({ homeAddress });
   }
 
 
@@ -67,7 +70,7 @@ export class ProfileProvider {
         this.currentUser.email,
         oldPassword
       );
-  
+
     return this.currentUser
       .reauthenticateWithCredential(credential)
       .then(user => {
@@ -82,7 +85,26 @@ export class ProfileProvider {
 
 
 
-
-
-
+  async addPicture(profilePicture): Promise<void> {
+    if (profilePicture != null) { 
+      const storageRef =
+          firebase
+          .storage()
+            .ref(`/userPicture/${this.userProfile.key}/profilePicture.png`)
+            await storageRef.putString(profilePicture, 'base64', { contentType: 'image/png' });
+      const downloadURL = await storageRef.getDownloadURL();
+      return this.userProfile
+        .update({ profilePicture: downloadURL })
+        } 
+      }
+        
+getAllReferral():firebase.database.Reference {
+  const referrals = firebase.database().ref('/referrals');
+  return referrals;
 }
+
+
+
+  }
+
+

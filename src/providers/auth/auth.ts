@@ -11,46 +11,88 @@ import 'firebase/database';
 */
 @Injectable()
 export class AuthProvider {
+ 
 
   constructor() {
   }
 
-loginUser(email:string, password:string): Promise<any> {
+  loginUser(email: string, password: string): Promise<any> {
 
-  return firebase.auth().signInWithEmailAndPassword(email, password);
-}
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  }
 
-signupUser (email: string, password:string): Promise<any> {
-  return firebase
+  signupUser(email: string, password: string, referral,firstname: string, lastname: string, address:string, number:string, refCount:number, referred:string): Promise<any> {
+    return firebase
 
-  .auth()
-  .createUserAndRetrieveDataWithEmailAndPassword(email, password)
-  .then(newUserCredential => {
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(newUser => {
+        firebase
+          .database()
+          .ref(`/userProfile/${newUser.uid}/email`)
+          .set(email);
+      })
+      .then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/referral`)
+          .set(referral);
+      })
+      .then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/firstName`)
+          .set(firstname);
+      })
+      .then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/lastName`)
+          .set(lastname);
+      }).then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/homeAddress`)
+          .set(address);
+      }).then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/phoneNumber`)
+          .set(number);
+      }).then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${firebase.auth().currentUser.uid}/refCount`)
+          .set(refCount);
+      }).then(newUserCredential => {
+        if (referred != " ") {
+          firebase
+          .database()
+          .ref('/referrals')
+          .push(referred);
+        }
+      })
+
+      .catch(error => {
+        console.error(error);
+        throw new Error(error);
+      });
+
+  }
+
+  resetPassword(email: string): Promise<void> {
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
+
+  logoutUser(): Promise<void> {
+    const userId: string = firebase.auth().currentUser.uid;
     firebase
-    .database()
-    .ref(`/userProfile/${newUserCredential.user.uid}/email`)
-    .set(email);
-  })
-  .catch(error => {
-    console.error(error);
-    throw new Error(error);
-  });
- 
-}
 
-resetPassword(email:string): Promise<void> {
-  return firebase.auth().sendPasswordResetEmail(email);
-}
-
-logoutUser():Promise<void> {
-  const userId: string = firebase.auth().currentUser.uid;
-  firebase
-
-    .database()
-    .ref(`/userProfile/${userId}`)
-    .off()
-  return firebase.auth().signOut();
-}
+      .database()
+      .ref(`/userProfile/${userId}`)
+      .off()
+    return firebase.auth().signOut();
+  }
 
 
 

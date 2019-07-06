@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Alert, IonicPage, NavController, NavParams, AlertController, Loading, LoadingController } from 'ionic-angular';
-import { FormGroup, Validators, AbstractControl, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthProvider } from "../../providers/auth/auth";
 import { EmailValidator } from "../../validators/email";
 import 'rxjs/add/operator/map';
@@ -28,6 +28,7 @@ export class SignupPage {
   public confirmPassword;
   public address;
   public phone;
+  public referred;
 
   constructor(
     public navCtrl: NavController,
@@ -36,18 +37,19 @@ export class SignupPage {
     public formBuilder: FormBuilder,
     public authProvider: AuthProvider,
     public loadingCtrl: LoadingController) {
-
+    console.log(this.refGenerator());
     this.signupForm = formBuilder.group({
-      // firstname: ['', Validators.required],
-      // lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      // address: ['', Validators.required],
-      // phone: ['', [Validators.required, Validators.minLength(11)]],
+      address: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(11)]],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-       confirmPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      referred: [''],
 
-    }, 
-     { validator: this.matchingPasswords('password', 'confirmPassword') }
+    },
+      { validator: this.matchingPasswords('password', 'confirmPassword') }
     );
 
     this.firstname = this.signupForm.controls['firstname'];
@@ -56,6 +58,7 @@ export class SignupPage {
     this.password = this.signupForm.controls['password'];
     this.confirmPassword = this.signupForm.controls['confirmPassword'];
     this.address = this.signupForm.controls['address'];
+    this.phone = this.signupForm.controls['phone'];
     this.phone = this.signupForm.controls['phone'];
 
   }
@@ -82,10 +85,18 @@ export class SignupPage {
     } else {
       const email: string = this.signupForm.value.email;
       const password: string = this.signupForm.value.password;
+      const firstname: string = this.signupForm.value.firstname;
+      const lastname: string = this.signupForm.value.lastname;
+      const address: string = this.signupForm.value.address;
+      const phone = this.signupForm.value.phone;
+      const referral = this.refGenerator();
+      const referred = this.signupForm.value.referred
+      const refCount = 0;
 
-      this.authProvider.signupUser(email, password).then(
-        user => {
-          this.loading.dismiss().then(() => {
+      this.authProvider.signupUser(email, password, referral, firstname, lastname, address, phone, refCount, referred)
+      .then(user => {
+          this.loading.dismiss()
+          .then(() => {
             this.navCtrl.setRoot(HomePage);
           });
         },
@@ -97,11 +108,30 @@ export class SignupPage {
             });
             alert.present();
           });
-        }
-      );
+        });
       this.loading = this.loadingCtrl.create();
       this.loading.present();
     }
   }
 
+
+  refGenerator() {
+    var randomString = function (length) {
+
+      var text = "";
+
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      for (var i = 0; i < length; i++) {
+
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      }
+      return text;
+    }
+
+    // random string length
+    var random = randomString(6);
+    return random;
+  }
 }

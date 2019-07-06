@@ -1,0 +1,38 @@
+<!--
+  Generated template for the OrderDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color= "primary">
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+<ion-list class="tophalf">
+  <h1>{{currentEvent?.name}}</h1>
+  <p><span>Date: <strong>{{currentEvent?.date}}</strong></span></p>
+  <p><span>Time: <strong>{{currentEvent?.time}}</strong></span></p>
+  <p class="span">${{currentEvent?.cost}}</p>
+  <h5>
+      <ion-icon name="locate"></ion-icon><strong> {{currentEvent?.place}}</strong>
+  </h5>
+</ion-list>
+
+<ion-list class="bottomhalf">
+  <button ion-item class="list">
+      <ion-icon name="eye" item-start></ion-icon>
+      <p>Request Status</p>
+      <span>{{currentEvent?.status}}</span>
+  </button>
+
+  <button (click)="openSupport()" ion-item class="list">
+      <ion-icon name="chatbubbles" item-start></ion-icon>
+      <span class="cancel">MAKE COMPLAINT</span>
+  </button>
+
+</ion-list>
+</ion-content>

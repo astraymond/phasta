@@ -1,0 +1,38 @@
+page-referral {
+   // background-color:#E8e8e8  !important;
+
+
+   ion-content{
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   }
+.ref{
+    text-align: center;
+    position: absolute;
+    top: 30%;
+}
+
+h4{
+    color: rgb(240, 225, 145)
+}
+
+strong{
+    color:  #D62828;
+}
+p{
+    color: #fff;
+}
+
+h1{
+    position: relative;
+    left: 17%;
+    text-align: center;
+    width: 62%;
+    color: #fff !important;
+    background-color: #D62828 !important;
+}
+
+}
+

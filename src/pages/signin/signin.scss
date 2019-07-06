@@ -1,20 +1,33 @@
 page-signin {
 
     .signin {
-        background: url(../assets/imgs/welcome.jpg)  no-repeat center center fixed;
-        background-size: 100%;
-        background-position-y: -10%;
+        background: #606c88;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        // background: url(../assets/imgs/welcome.jpg)  no-repeat center center fixed;
+        // //background-size: 100%;
+        // background-position-y: -10%;
+        // background-size: cover;
         // padding-right: 0px;
         // margin-left: -50px;
-    
 
 
     }
+    .avatar img{
+        width:120% !important;  
+        height : 120% !important;  
+        max-width: 100px !important;  
+        max-height: 100px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
 
-    .stagnetti{
+
+    .stagnetti {
         position: fixed;
-        padding-right: 35px;
-        margin-top:150px;
+       // padding-right: 35px;
+        margin-top: 18%;
         position: fixed;
         
     }
@@ -24,10 +37,42 @@ page-signin {
         margin-bottom: 10px;
     }
 
-    p{
-        font: bold;
-        font-size: 20px;
-        text-align: center;
-        margin-top: 50%;
-    }
+        ion-item{
+            margin-top: 20px !important;
+            
+        }
+
+
+
+        // span {
+        //     color: #D62828;
+        // }
+
+
+        .nuser {
+           position: relative;
+           text-align: center !important;
+            color:  #faffd1 !important;
+            font: bold;
+            font-size: 20px;
+            margin-top: 80px;
+
+        }
+       
+        .reset {
+            position: relative;
+            text-align: center !important;
+             color:  #faffd1 !important;
+             font: bold;
+             font-size: 17px;
+            
+         }
+
+
+
+         .error-message {
+            color: white !important;
+          // font-size: 10px !important;
+          }
+        
 }

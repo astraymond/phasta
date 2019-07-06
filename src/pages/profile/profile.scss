@@ -1,5 +1,11 @@
 page-profile {
 
+    ion-content {
+      background: #606c88;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
     ion-item ion-label {
         margin: 0 !important;
       }
@@ -10,11 +16,21 @@ page-profile {
       }
     
       ion-list-header {
-        background-color: #ECECEC;
         margin: 0;
         padding: 0;
       }
     
+
+
+.avatar img{
+  width:120% !important;  
+  height : 120% !important;  
+  max-width: 150px !important;  
+  max-height: 150px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
       ion-item { padding: 0 !important; }
     
       ion-datetime { padding-left: 3px !important; }
@@ -42,4 +58,23 @@ page-profile {
         padding: 10px !important;
         max-width: 50% !important;
       }
+
+      ion-item {
+        background: #606c88;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+          color: white !important;
+          
+        }
+        
+        ion-label {
+          color:white !important;
+        }
+
+        ion-list-header {
+          background: #606c88;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
 }

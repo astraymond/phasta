@@ -1,27 +1,48 @@
-<ion-menu id="myMenu" [content]="content">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title >Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
+<ion-menu id="myMenu" [content]="content" color="background">
 
-    <ion-content>
+  <ion-content class="sidebar">
+    <div no-padding class="sidebartop">
+      <ion-item>
+        <ion-icon *ngIf="!userProfile?.profilePicture"  name="contact"></ion-icon>
+
+        <ion-avatar *ngIf="userProfile?.profilePicture" class="avatar">
+          <img [src]="userProfile?.profilePicture">
+        </ion-avatar>
+
+        <p class="name" *ngIf="userProfile?.firstName || userProfile?.lastName">
+          {{userProfile?.firstName}} {{userProfile?.lastName}}
+        </p>
+        <p class="number">{{userProfile?.phoneNumber}}</p>
+      </ion-item>
+    </div>
+    <div class="sidebarbottom">
       <ion-list>
-        <button ion-item menuClose (click)= "goToHome()">
-            <ion-icon class="over-lord" name="home"></ion-icon> Dashboard
-        </button>
-        <button ion-item menuClose (click)="goToProfile()">
+        <a class="vandal" ion-item menuClose (click)="goToHome()">
+          <ion-icon class="over-lord" name="home"></ion-icon> Dashboard
+        </a>
+        <a class="vandal" ion-item menuClose (click)="goToProfile()">
+          <ion-icon class="over-lord" name="person"></ion-icon>
           Profile
-        </button>
-        <button ion-item menuClose>
+        </a>
+        <a class="vandal" ion-item menuClose (click)="goToHistory()">
+          <ion-icon class="over-lord" name="list-box"></ion-icon>
           History
-        </button>
-        <button ion-item menuClose (click)="logout()">
-            <ion-icon class="over-lord" name="log-out"></ion-icon>
+        </a>
+        <a class="vandal" ion-item menuClose (click)="goToSupport()">
+          <ion-icon class="over-lord" name="chatboxes"></ion-icon>
+          Customer Support
+        </a>
+        <a class="vandal" ion-item menuClose (click)="goToReferral()">
+          <ion-icon class="over-lord" name="link"></ion-icon>
+          Referral
+        </a>
+        <a class="vandal" ion-item menuClose (click)="logout()">
+          <ion-icon class="over-lord" name="log-out"></ion-icon>
           Logout
-        </button>
+        </a>
       </ion-list>
-    </ion-content>
-  </ion-menu>
-  
-  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage" class="light-theme"></ion-nav>

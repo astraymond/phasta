@@ -1,0 +1,51 @@
+page-history {
+.status {
+    position: absolute;
+   // left: 50%;
+    bottom: 15px;
+    color: #ff0505;
+    font-weight: bold;
+}
+
+.statusChange {
+    position: absolute;
+   // left: 35%;
+    bottom: 15px;
+    color: #228d01;
+    font-weight: bold;
+}
+
+.statusCancelled {
+    position: absolute;
+   // left: 35%;
+    bottom: 15px;
+    color: #039BE5
+    ;
+    font-weight: bold;
+}
+
+ion-content {
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+ion-item {
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+//color: #003049 !important;
+
+      p {
+          position: relative;
+        width: 116px;
+          color: #fff !important;
+          background-color: #D62828 !important;
+      }
+      
+    }
+    
+    ion-label {
+      color:#EAE2B7 !important;
+    }
+}

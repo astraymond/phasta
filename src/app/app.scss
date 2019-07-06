@@ -15,7 +15,118 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
-.over-lord{
-margin-top: 0px;
-font-size:20px;
+
+
+.sidebar{
+
+    
+
+.sidebartop{
+    height: 35%;
+    background: #003049;
+
+    ion-item{
+       background: #003049;
+        position: relative;
+        width: 100%;
+        height:100%;
+
+            .name {
+            text-transform: uppercase;
+            text-align: center;
+            color: #f4f4f4;  
+            padding: 10px;
+            font-weight: bold;
+            margin-bottom: -5px;
+            }
+
+            .number {
+                text-align: center;
+           font-size: 14px;
+           margin-top: 0px;
+                color: #CCCCCC;
+            }
+
+            .avatar img{
+                width:100% !important;  
+                height : 100% !important;  
+                max-width: 110px !important;  
+                max-height: 130px !important;
+                align-content: center !important;                
+                margin-left: auto !important;
+               margin-right: auto !important;
+              }
+        
+              ion-icon{
+                  position: relative;
+                  left: 33% !important;
+                  font-size: 100px !important;
+                  color: white !important;
+              }
+        
+
+
+
+    }
+
+
 }
+    
+
+.sidebarbottom {
+    background: #f4f4f4;
+
+    .vandal {
+        margin-bottom: 5% !important;
+         color: #252635;
+         font-weight: bold;
+         background: #f4f4f4;
+        // background: #f4f4f4;
+         //background: #EAE2B7;
+         padding: 0px 10px;
+
+    }
+    
+}
+
+
+
+    // .vandalast {
+    //     position: absolute;
+    //     bottom: 15% !important;
+    //     font-weight: bold;
+    //     color: #252635;
+    //     background: #f4f4f4;
+    // }
+
+    .over-lord{
+        position: relative;
+        font-size:16px;
+        left: 5px;
+        margin-right: 20px;
+        }
+
+
+        }
+
+        .error {
+            text-align: center !important;
+
+          
+            .toast-wrapper{ 
+               background: darken(#ed4039, 30%) !important;
+            }
+          }
+
+          .loadingWrapper {
+            color: #252635 !important;
+
+        }
+
+
+        .item-radio.item ion-option {
+            text-align: center !important;
+            font: bold !important;
+            color: red !important;
+          }
+          

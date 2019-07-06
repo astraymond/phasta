@@ -40,7 +40,7 @@ console.log (`Form is not valid yet, current value:${this.resetPasswordForm.valu
     this.authProvider.resetPassword(email)
     .then( user=> {
       const alert: Alert = this.alertCtrl.create ({
-        message: "Check your email for a passwprd reset link",
+        message: "Check your email for a password reset link",
         buttons: [{
           text: "OK",
           role: "cancel",

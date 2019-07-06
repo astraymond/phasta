@@ -7,44 +7,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>emergency</ion-title>
+    <ion-title>Emergency</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col no-padding>
-        <ion-card>
-          <ion-icon name="ai-police"></ion-icon>
-          <h2>POLICE</h2>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col no-padding>
-        <ion-card>
-          <ion-icon name="ai-ambulance"></ion-icon>
-          <h2>AMBULANCE</h2>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col no-padding>
-        <ion-card>
-          <ion-icon name="ai-fire-service"></ion-icon>
-          <h2>Fire Service</h2>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+        <div (click)="emergencyCall('112')" class="ion-card">
+          <ion-icon class="fireservice" name="call"></ion-icon>
+        </div>
 </ion-content>

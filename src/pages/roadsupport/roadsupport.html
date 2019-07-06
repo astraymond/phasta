@@ -5,56 +5,52 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color='primary'>
-    <ion-title>roadsupport</ion-title>
+    <ion-title>Road support</ion-title>
+    <span *ngIf="selectedCost !== undefined && selectedCost !== 0" class="selectedCost">&#8358;{{selectedCost}}</span>
+    <span *ngIf="selectedCost == 0"  class="selectedCost">Price not fixed.</span>
   </ion-navbar>
-
+  
 </ion-header>
 
 
-<ion-content padding>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-label>Service</ion-label>
-            <ion-select [(ngModel)]="roadsupport" multiple="true">
-              <ion-option value="Mechanic">Mechanic</ion-option>
-              <ion-option value="Tow truck">Tow Truck</ion-option>
-              <ion-option value="Vulcanizer">Vulcanizer</ion-option>
-              <ion-option value="Electrician">Electrician</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-col>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label> Service</ion-label>
+      <ion-select [(ngModel)]="eventName" multiple="false" (ionChange)="getCost()">
+        <ion-option value="Mechanic">Mechanic</ion-option>
+        <ion-option value="Tow truck">Tow Truck</ion-option>
+        <ion-option value="Taxi">Taxi</ion-option>
+        <ion-option value="Car Electrician">Car Electrician</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-col>
-          <ion-item>
-              <ion-label>Date</ion-label>
-              <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
-            </ion-item>
-      </ion-col>
-      <ion-col>
-          <ion-item>
-              <ion-label>Time</ion-label>
-              <ion-datetime displayFormat="hh:mm a" [(ngModel)]="myDate"></ion-datetime>
-            </ion-item>
-      </ion-col>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventDate" min="{{minDate}}" ></ion-datetime>
+    </ion-item>
 
-      <ion-row>
-      <ion-col col-11 no-padding>
-        <ion-item>
-    <ion-textarea  autosize type="text" placeholder="Location" [(ngModel)]="gps"></ion-textarea>
-  </ion-item>
-    </ion-col >
-    <ion-col col-1>
-          <ion-icon name="navigate" (click)="postLocation()"></ion-icon>
-    </ion-col>
-  </ion-row>
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="eventTime"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <textarea #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()" placeholder="Location" [(ngModel)]="gps"></textarea>
+      <!-- <ion-input placeholder="Location" [(ngModel)]="gps"></ion-input> -->
+      <ion-icon name="locate" (click)="postLocation()" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item *ngIf="eventName == 'Taxi'">
+      <textarea #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()" placeholder="Destination" [(ngModel)]="eventDestination"></textarea>
+    </ion-item>
 
 
+  </ion-list>
 
-      <div padding>
-        <button ion-button full>PHASTA</button>
-      </div>
+
+  <div padding>
+    <button round full ion-button (click)="eventList(eventName, eventDate,eventTime, eventPlace, eventCost, eventDestination)">Phasta</button>
+  </div>
 </ion-content>

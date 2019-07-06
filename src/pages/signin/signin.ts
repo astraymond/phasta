@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Alert, AlertController, IonicPage, Loading, LoadingController, NavController, NavParams, MenuController } from 'ionic-angular';
-import {SignupPage} from '../signup/signup';
-import {ResetPasswordPage} from '../reset-password/reset-password';
+import { SignupPage } from '../signup/signup';
+import { ResetPasswordPage } from '../reset-password/reset-password';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -31,16 +31,16 @@ export class SigninPage {
     public authProvider: AuthProvider,
     formBuilder: FormBuilder,
     public menuCtrl: MenuController
-    ) {
-    
-     // this.menuCtrl.enable(false,'myMenu');
+  ) {
+
+    // this.menuCtrl.enable(false,'myMenu');
 
 
-      this.loginForm = formBuilder.group({
-        
-        email:[
-          '',
-          Validators.compose([Validators.required, EmailValidator.isValid])
+    this.loginForm = formBuilder.group({
+
+      email: [
+        '',
+        Validators.compose([Validators.required, EmailValidator.isValid])
       ],
       password: [
         '',
@@ -50,53 +50,51 @@ export class SigninPage {
   }
 
   ionViewDidEnter() {
-    this.menuCtrl.enable(false,'myMenu');
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SigninPage');
   }
 
-loginUser(): void {
-  if (!this.loginForm.valid) {
-    console.log(
-      `Form is not valid yet, current value: ${this.loginForm.value}`
+  loginUser(): void {
+    if (!this.loginForm.valid) {
+      console.log(
+        `Form is not valid yet, current value: ${this.loginForm.value}`
 
-    );
-  }else {
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
+      );
+    } else {
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
 
-    this.authProvider.loginUser(email, password)
-    .then(authData => {
-      this.loading.dismiss()
-      .then(() =>{
-        this.navCtrl.setRoot(HomePage);
-      });
-    },
+      this.authProvider.loginUser(email, password)
+        .then(authData => {
+          this.loading.dismiss()
+            .then(() => {
+              this.navCtrl.setRoot(HomePage);
+            });
+        },
 
-    error => {
-      this.loading.dismiss().then(() =>{
-        const alert: Alert = this.alertCtrl.create({
-          message: error.message,
-          buttons: [{ text: 'OK', role:
-        'cancel'}]
-        });
-        alert.present();
-      });
+          error => {
+            this.loading.dismiss().then(() => {
+              const alert: Alert = this.alertCtrl.create({
+                message: error.message,
+                buttons: [{ text: "Ok", role: "cancel" }]
+              });
+              alert.present();
+            });
+          });
+      this.loading = this.loadingCtrl.create();
+      this.loading.present(); 
     }
-  );
-  this.loading = this.loadingCtrl.create();
-  this.loading.present();
   }
-}
 
 
-  goToSignup():void {
+  goToSignup(): void {
     this.navCtrl.push(SignupPage);
   }
 
-  goToResetPassword():void {
+  resetPassword(): void {
     this.navCtrl.push(ResetPasswordPage);
   }
 

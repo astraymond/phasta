@@ -5,4 +5,6 @@ export const firebaseconfig = {
     projectId: "phasta-a13d1",
     storageBucket: "phasta-a13d1.appspot.com",
     messagingSenderId: "511400834893"
+
+    
   };

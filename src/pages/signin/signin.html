@@ -1,37 +1,45 @@
 <ion-menu id="myMenu" [content]="content"></ion-menu>
+<ion-nav #content></ion-nav>
 <ion-header>
 
 </ion-header>
 
 
-<ion-content padding class='signin' no-bounce>
-  <!-- <img src="../../assets/imgs/Phasta.jpg"> -->
-  <ion-col class="stagnetti">
-    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+<ion-content  class='signin' no-bounce>
+  <ion-avatar padding class="avatar" (click)="openSelect()">
+    <img src="assets/imgs/logo2.png">
+  </ion-avatar>
+  <ion-row>
+    <ion-col class="stagnetti">
+      <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
-      <ion-item>
-        <ion-input formControlName="email" type="email"
-        placeholder="Your email address"
-        [class.invalid]="!loginForm.controls.email.valid && blur">
-        </ion-input>
-      </ion-item>
-      <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid &&
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input formControlName="email" type="email" [class.invalid]="!loginForm.controls.email.valid && blur">
+          </ion-input>
+        </ion-item>
+        <span class="error-message" *ngIf="!loginForm.controls.email.valid &&
       loginForm.controls.email.touched">
-       <p>Please enter a valid email address.</p>
-     </ion-item>
+          <p>Please enter a valid email address.</p>
+        </span>
 
-      <ion-item>
-        <ion-input formControlName="password" type="password"
-        placeholder="Your password"
-        [class.invalid]="!loginForm.controls.password.valid && blur">
-      </ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && blur">
+          </ion-input>
+        </ion-item>
+        <span class="error-message" *ngIf="!loginForm.controls.password.valid &&
+      loginForm.controls.password.touched">
+          <p>Please input password.</p>
+        </span>
 
-      <button class="margin-top" ion-button block type="submit" [disabled]="!loginForm">
-        Log In
-      </button>
-    </form>
-    <p (click)="goToSignup()">New User? sign up now</p>
-  </ion-col>
+        <button class="margin-top" ion-button block type="submit" [disabled]="!loginForm">
+          Log In
+        </button>
+      </form>
+      <p class="reset" (click)="resetPassword()">Reset Password</p>
+      <p class="nuser" (click)="goToSignup()">New User? sign up now</p>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

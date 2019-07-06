@@ -1,0 +1,56 @@
+page-home-services {
+   
+  ion-navbar{
+    position: relative !important;
+    height: 200px !important;
+    //text-align: center;
+
+    .selectedCost{
+      width: 70%;
+      color: white;
+     position:absolute;
+      text-align: center !important;
+
+      font-size: 40px;
+    }
+
+    
+    ion-icon{
+      position: absolute !important;
+      bottom: 70px !important;
+    }
+    ion-title{
+      position: absolute;
+      top: 20px;
+    }
+  }
+    
+    
+    #myInput {
+        width: calc(100% - 10px);
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+    
+    ion-list ion-item {
+      margin-top: 10px !important;
+       padding-left: 10px !important;
+       padding-right: 10px !important;
+      // padding-bottom: 5px !important;
+       //padding-top: 5px !important;
+       color: #1A535C !important;
+   
+     
+   
+     
+     ion-label {
+       color:#1A535C !important;
+       font-weight: bold;
+     }
+   
+   
+    }
+
+
+  }

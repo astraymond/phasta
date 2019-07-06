@@ -1,0 +1,61 @@
+<!--
+  Generated template for the HomeDeliveryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Home Delivery</ion-title>
+    <span *ngIf="selectedCost !== undefined && selectedCost !== 0" class="selectedCost">&#8358;{{selectedCost}}</span>
+    <span *ngIf="selectedCost == 0"  class="selectedCost">Price not fixed.</span>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label> Service</ion-label>
+      <ion-select [(ngModel)]="eventName" multiple="false" (ionChange)="getCost()">
+        <ion-option value="pms">Fuel</ion-option>
+        <ion-option value="propane">Cooking Gas</ion-option>
+        <ion-option value="diesel">Diesel</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="eventName == 'pms' || eventName == 'diesel'">
+      <ion-label>Litres</ion-label>
+      <ion-input type='number' [(ngModel)]="eventQuantity"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="eventName == 'propane'">
+      <ion-label>Size (kg)</ion-label>
+      <ion-select [(ngModel)]="eventQuantity" multiple="true">
+        <ion-option value="4">4kg</ion-option>
+        <ion-option value="7">7kg</ion-option>
+        <ion-option value="12.5">12.5kg</ion-option>
+        <ion-option value="25">25kg</ion-option>
+        <ion-option value="45">45kg</ion-option>
+        <ion-option value="50">50kg</ion-option>
+        <ion-option value="70">70kg</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" min="{{minDate}}" [(ngModel)]="eventDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="eventTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <textarea #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()" placeholder="Location" [(ngModel)]="gps"></textarea>
+      <!-- <ion-input placeholder="Location" [(ngModel)]="gps"></ion-input> -->
+      <ion-icon name="locate" (click)="postLocation()" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button round full (click)="eventList(eventName,eventQuantity,eventDate,eventTime,eventPlace,eventCost)">Phasta</button>
+  </div>
+</ion-content>

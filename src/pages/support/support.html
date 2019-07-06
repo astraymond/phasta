@@ -1,0 +1,48 @@
+<!--
+  Generated template for the SupportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-menu id="myMenu" [content]="content"></ion-menu>
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+       Customer Care
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let chat of chatList" no-lines>
+          <div class="chat-message" text-right *ngIf="chat.nickname === user">
+            <div class="right-bubble">
+              <span class="msg-name">Me</span>
+              <span class="msg-date">{{chat?.sendDate | date:'short'}}</span>
+              <p text-wrap>{{chat?.message}}</p>
+            </div>
+          </div>
+          <div class="chat-message" text-left *ngIf="chat.nickname !== user">
+            <div class="left-bubble">
+              <span class="msg-name">Admin</span>
+              <span class="msg-date">{{chat?.sendDate | date:'short'}}</span>
+              <p text-wrap>{{chat?.message}}</p>
+            </div>
+          </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10>
+          <ion-input type="text" placeholder="Type a message" [(ngModel)]="instantMessage" name="instantMessage"></ion-input>
+        </ion-col>
+        <ion-col col-2 (click)="sendMessage(instantMessage)">
+          <ion-icon name="paper-plane"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>

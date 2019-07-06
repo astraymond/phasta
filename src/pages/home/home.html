@@ -1,74 +1,100 @@
-<ion-menu id="myMenu" [content]="content">
-</ion-menu><ion-header>
-    <ion-navbar color="primary">
+<ion-menu  id="myMenu" [content]="content"></ion-menu>
+<ion-nav #content></ion-nav>
+<ion-header>
+    <ion-navbar color="primary" >
         <button ion-button menuToggle>
             <ion-icon class="menu-default" name="menu"></ion-icon>
         </button>
-        <ion-title>Dashboard</ion-title>
+        <ion-title>Phasta</ion-title>
     </ion-navbar>
 </ion-header>
+<ion-content no-padding class="card-background-page">
+    <div class="original" *ngIf="activeLength == undefined || activeLength == 0">
+        <ion-card (click)="roadsupport()">
+            <img src="assets/imgs/mechanic.jpeg" />
+            <div class='card-title'>Road Support</div>
+            <div class='card-subtitle'>Towing/Mechanic...</div>
+            <ion-item class=card-item no-padding>
+                <ion-avatar item-start><img src="assets/imgs/mech1.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/mech3.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/mech2.jpg"></ion-avatar>
+                <p>6:00 am - 12:00am</p>
+            </ion-item>
+        </ion-card>
+        <ion-card (click)="cleaners()" class="cleaning-services">
+            <img src="assets/imgs/salon.jpg" />
+            <div class='card-title'>Home services</div>
+            <div class='card-subtitle'>Salon/Spa/Laundry/...</div>
+            <ion-item class=card-item no-padding>
+                <ion-avatar item-start><img src="assets/imgs/home1.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/home2.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/home3.jpg"></ion-avatar>
+                <p>6:00 am - 12:00am</p>
+            </ion-item>
+        </ion-card>
+        <ion-card (click)="fuel()" class="fuel-gas">
+            <img src="assets/imgs/home_delivery.jpg" />
+            <div class='card-title'>Home Delivery</div>
+            <div class='card-subtitle'>Diesel/Pms/Propane..</div>
+            <ion-item class=card-item no-padding>
+                <ion-avatar item-start><img src="assets/imgs/del1.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/del2.png"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/person-icon.png"></ion-avatar>
+                <p>6:00 am - 12:00am</p>
+            </ion-item>
+        </ion-card>
+        <ion-card (click)="sos()" class="emergency">
+            <img src="assets/imgs/ambulance.jpg" />
+            <div class='card-title'>Emergency</div>
+            <div class='card-subtitles'>Police/Fire serv...</div>
+            <ion-item class=card-item no-padding>
+                <ion-avatar item-start><img src="assets/imgs/emer1.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/emer2.jpg"></ion-avatar>
+                <ion-avatar item-start><img src="assets/imgs/emer3.jpg"></ion-avatar>
+                <p>24hours/7days</p>
+            </ion-item>
+        </ion-card>
+    </div>
+    <div no-padding class="select-modal" *ngFor="let active of activeEvent">
+            
+                <ion-list class="tophalf">
+                    <h1>{{active?.name}} {{active?.size}}</h1>
+                    <p><span>Date: <strong>{{active?.date}}</strong></span></p>
+                    <p><span>Time: <strong>{{active?.time}}</strong></span></p>
+                    <p class="span" *ngIf="active.cost ==''">Cost will be updated as soon as possible</p>
+                    <p class="span" *ngIf="active.cost !== '' ">&#8358;{{active?.cost}}</p>
+                    <h5>
+                        <ion-icon name="locate"></ion-icon><strong> {{active?.place}}</strong>
+                    </h5>
+                </ion-list>
+        
+  
+                <ion-list class="bottomhalf">
+                    <button ion-item class="list">
+                        <ion-icon name="timer" item-start></ion-icon>
+                        <p>Time Remaining</p>
+                        <span id="demo"></span>
+                    </button>
+                    <button ion-item class="list">
+                        <ion-icon name="eye" item-start></ion-icon>
+                        <p>Request Status</p>
+                        <span>{{active?.status}}</span> <span class="payStatus">{{active?.payment}}</span>
+                    </button>
+                    <button (click)="cardPay()" ion-item class="list" [disabled]="active?.payment == 'PAID' || active?.cost ==''">
+                        <ion-icon id="pay" name="card" item-start></ion-icon>
+                        <span id="pay">CARD PAYMENT</span>
+                    </button>
+                    <button (click)="cancelRequest()" ion-item class="list">
+                        <ion-icon id="remove" name="remove-circle" item-start></ion-icon>
+                        <span class="cancel">CANCEL REQUEST</span>
+                    </button>
+                </ion-list>
+                <ion-fab bottom right>
+                    <button (click)="support()" ion-fab color="light">
+                        <ion-icon name="chatbubbles"></ion-icon>
+                    </button>
+                    <ion-label>{{unread}}</ion-label>
+                </ion-fab>
 
-<ion-content padding>
-    <!-- <ion-grid>
-        <ion-row>
-            <div ion-col no-padding>
-                <ion-card class="top-slide">
-                   <p>{{ format }} </p>
-                </ion-card>
-            </div>
-        </ion-row>
-    </ion-grid> -->
-
-    <ion-grid>
-        <ion-row>
-            <ion-col no-padding>
-                <ion-card (click)="roadsupport()" class="road-support">
-                    <ion-icon name="ai-road-support"></ion-icon>
-                    <div class='card-title'>Road Support</div>
-                </ion-card>
-</ion-col>
-                <ion-col no-padding>
-                    <ion-card (click)="cleaners()" class="cleaning-services">
-                        <ion-icon name="ai-cleaner"></ion-icon>
-                        <div class='card-title'>Cleaners</div>
-                    </ion-card>
-                    </ion-col>
-        </ion-row>
-    </ion-grid>
-    <ion-grid>
-        <ion-row>
-            <ion-col  no-padding>
-                <ion-card (click)="fuel()"     class="fuel-gas">
-                    <ion-icon name="ai-fuel-gas"></ion-icon>
-                    <div class='card-title'>Pms/Gas Refill</div>
-                </ion-card>
-            </ion-col>
-
-            <ion-col  no-padding>
-                <ion-card (click)="salonspa()" class="salon-spa">
-                    <ion-icon name="ai-salon-spa"></ion-icon>
-                    <div class='card-title'>Salon/Spa</div>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
-    <ion-grid>
-        <ion-row>
-            <ion-col  no-padding>
-                <ion-card (click)="sos()" class="emergency">
-                    <ion-icon name="ai-sos"></ion-icon>
-                    <div class='card-title'>Emergency</div>
-                </ion-card>
-            </ion-col>
-
-            <ion-col  no-padding>
-                <ion-card (click)="others()" class="other-services">
-                    <ion-icon name="more"></ion-icon>
-                    <div class='caro-title'>Other services</div>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
+    </div>
 </ion-content>

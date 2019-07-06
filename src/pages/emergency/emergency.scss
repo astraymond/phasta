@@ -1,51 +1,82 @@
 page-emergency {
 
 
-ion-card{
+.ion-card{
+    border-top-style: double;
+    border-right-style: solid;
+    border-bottom-style: double;
+    border-left-style: solid;
+    border-width: 10px;
+    border-color: #C4C4C4;
     position: relative;
-    height:130px;
-    text-align: center
+    top: 30%;
+    left: 10%;
+    height:40%;
+    width:80%;
+    text-align: center;
+     border-radius: 50%  !important;
+     background: rgb(177, 44, 42)
+
 }
 
 
-
-ion-icon{
-    text-align: center;
+ion-icon {
     position: relative;
+    border-radius: 50%  !important;
+    text-shadow: 5px 5px #252635, 5px 5px #fff !important;
+    //height: 150px;
+    top: 20%;
+    text-align: center;
+   // left: 40%;
+    color: #fff;
     font-size:100px;
 }
 
 
 
+// .ambulance{
+//     color: #488aff !important;
+
+// }
 
 
-    .ai-ambulance:before ,
-    .ion-ios-ai-ambulance:before ,
-    .ion-ios-ai-ambulance-outline:before ,
-    .ion-md-ai-ambulance:before ,
-    .ion-md-ai-ambulance-outline:before {
-    content: '\e900';
+h2{
+    background-color:#D62828  !important;
+    width: 35%;
+    color: #fff !important;
+    position: relative;
+    left: 32%;
+    font-weight: bold !important;
+
+}
+
+    // .ai-ambulance:before ,
+    // .ion-ios-ai-ambulance:before ,
+    // .ion-ios-ai-ambulance-outline:before ,
+    // .ion-md-ai-ambulance:before ,
+    // .ion-md-ai-ambulance-outline:before {
+    // content: '\e900';
     
    
-    }
+    // }
 
-    .ai-fire-service:before ,
-    .ion-ios-ai-fire-service:before ,
-    .ion-ios-ai-fire-service-outline:before ,
-    .ion-md-ai-fire-service:before ,
-    .ion-md-ai-fire-service-outline:before {
-    content: '\e901';
+    // .ai-fire-service:before ,
+    // .ion-ios-ai-fire-service:before ,
+    // .ion-ios-ai-fire-service-outline:before ,
+    // .ion-md-ai-fire-service:before ,
+    // .ion-md-ai-fire-service-outline:before {
+    // content: '\e901';
     
    
-    }
+    // }
 
-    .ai-police:before ,
-    .ion-ios-ai-police:before ,
-    .ion-ios-ai-police-outline:before ,
-    .ion-md-ai-police:before ,
-    .ion-md-ai-police-outline:before {
-    content: '\e902';
+    // .ai-police:before ,
+    // .ion-ios-ai-police:before ,
+    // .ion-ios-ai-police-outline:before ,
+    // .ion-md-ai-police:before ,
+    // .ion-md-ai-police-outline:before {
+    // content: '\e902';
    
-    }
+    // }
     
 }
